@@ -243,7 +243,7 @@ const projects = [
     title: "Restify",
     description:
       "Serverless migration of a restaurant management system (from SIDGDER) to modern AWS architecture. It includes Stripe payments, real-time notifications via WebSockets, async processing with SQS, and event-driven flows with EventBridge. Built with Clean Architecture and SOLID principles, type-safe with TypeScript and Prisma. The frontend is a React app with Vite, TanStack Query, Zustand, Tailwind CSS, and Shadcn/ui.",
-    image: "/RestifyLogo.png",
+    image: "/RestIfyLogo.png",
     tags: ["React", "TypeScript", "Node.js", "AWS Lambda", "Prisma", "Stripe"],
     demoUrl: "https://restify-qa.up.railway.app",
     credentials: [
