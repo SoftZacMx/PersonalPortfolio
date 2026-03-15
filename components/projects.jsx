@@ -207,6 +207,136 @@ const projects = [
   - Initially deployed on AWS (EC2, RDS, S3), later migrated to Railway for cost optimization
   `,
   },
+  {
+    title: "NeuroFile",
+    description:
+      "A clinical record management system for psychology and neuropsychology practices. It digitizes patient expedients (records) with structured fields for incident details, treatment demand, therapeutic focus, family mapping, and diagnostic impressions. It supports voice-based workflows: record conversations, transcribe audio via workers, and map transcriptions into expedient drafts. Includes roles for Admin and Therapist, appointment scheduling, clinical notes, symptoms, and therapeutic modalities.",
+    image: "/NeuroFileLogo.png",
+    tags: ["Node.js", "MySQL", "Prisma", "AWS", "Railway"],
+    demoUrl: "https://neurofile-frontend-qa.up.railway.app",
+    credentials: [
+      {
+        role: "Admin",
+        user: "maria.garcia@neurofile.com",
+        password: "NeuroFile2025",
+      },
+    ],
+    roles: ["Admin", "Therapist"],
+    instructions: `
+  ## Getting Started
+  1. Log in as **Admin** using the credentials:  
+     **user:** maria.garcia@neurofile.com  
+     **Password:** NeuroFile2025  
+     The Admin role has full access to users, patients, appointments, and clinical records.
+
+  ## Key Features
+  - Role-based authentication (Admin, Therapist)
+  - Patient and clinical record (expedient) management with structured clinical fields
+  - Appointment scheduling and clinical notes linked to records
+  - Symptoms, therapeutic modalities, and diagnostic impressions per record
+  - Voice-to-expedient flow: record conversations, transcribe audio, and map to expedient drafts
+  - Backend workers for transcription and processing (AWS S3, SQS)
+  - Deployed on Railway (frontend QA environment)
+  `,
+  },
+  {
+    title: "Restify",
+    description:
+      "Serverless migration of a restaurant management system (from SIDGDER) to modern AWS architecture. It includes Stripe payments, real-time notifications via WebSockets, async processing with SQS, and event-driven flows with EventBridge. Built with Clean Architecture and SOLID principles, type-safe with TypeScript and Prisma. The frontend is a React app with Vite, TanStack Query, Zustand, Tailwind CSS, and Shadcn/ui.",
+    image: "/RestifyLogo.png",
+    tags: ["React", "TypeScript", "Node.js", "AWS Lambda", "Prisma", "Stripe"],
+    demoUrl: "https://restify-qa.up.railway.app",
+    credentials: [
+      {
+        role: "Admin",
+        user: "admin@restify.com",
+        password: "Restify123!",
+      },
+      {
+        role: "Manager",
+        user: "manager@restify.com",
+        password: "Restify123!",
+      },
+      {
+        role: "Waiter",
+        user: "waiter@restify.com",
+        password: "Restify123!",
+      },
+
+    ],
+    roles: ["Admin", "Manager", "Waiter", "Chef"],
+    instructions: `
+  ## Getting Started
+  1. Log in as **Admin** using the credentials:  
+     **user:** admin@restify.com  
+     **Password:** Restify123!  
+     Full access to all modules.
+
+  2. Other roles (same password **Restify123!**):  
+     **Manager:** manager@restify.com  
+     **Waiter:** waiter@restify.com  
+     **Chef:** chef@restify.com  
+
+  ## Key Features
+  - Serverless architecture with AWS Lambda
+  - Stripe payment integration and real-time WebSocket notifications
+  - Async processing with SQS and event-driven design with EventBridge
+  - Clean Architecture, SOLID, TypeScript, and Prisma
+  - Restaurant operations: orders, tables, menu, inventory, expenses
+  - Frontend: React 18, Vite, TanStack Query, Zustand, Tailwind, Shadcn/ui
+  `,
+  },
+  {
+    title: "GYF System",
+    description:
+      "A document and student management system for educational institutions. It centralizes documents (birth certificates, CURP, report cards, medical records, proof of address) by category, manages students and their grades, and links parents to students. Includes user and role management (Admin, Teacher, Parent), events, notifications, and company settings. Built with React, TypeScript, Vite, and Tailwind on the frontend; Express, TypeORM, MySQL, and S3-compatible storage on the backend.",
+    image: "/GYFSystemLogo.png",
+    tags: ["React", "TypeScript", "Node.js", "Express", "TypeORM", "MySQL", "Railway"],
+    demoUrl: "https://gyfsystem-frontend-qa.up.railway.app",
+    credentials: [
+      {
+        role: "Admin",
+        user: "admin@filesmanager.com",
+        password: "password123",
+      },
+      {
+        role: "Teacher (Editor)",
+        user: "maria@filesmanager.com",
+        password: "password123",
+      },
+      {
+        role: "Parent (Viewer)",
+        user: "carlos@filesmanager.com",
+        password: "password123",
+      },
+    ],
+    roles: ["Admin", "Editor", "Viewer"],
+    instructions: `
+  ## Getting Started
+  1. Log in as **Admin** using the credentials:  
+     **user:** admin@filesmanager.com  
+     **Password:** password123  
+     Full access to users, students, documents, events, notifications, and company settings.
+
+  2. Log in as **Teacher (Editor):**  
+     **user:** maria@filesmanager.com  
+     **Password:** password123  
+
+  3. Log in as **Parent (Viewer):**  
+     **user:** carlos@filesmanager.com or ana@filesmanager.com  
+     **Password:** password123  
+     Parents are linked to students and have viewer access.
+
+  ## Key Features
+  - Role-based access (Administrator, Teacher, Parent) with admin, editor, and viewer roles
+  - Document management by category (birth certificate, CURP, report cards, medical, address, ID)
+  - Student records with grade and status; parent–student linking
+  - Events and notifications; company information
+  - JWT authentication, Zod validation, S3-compatible file storage
+  - Frontend: React 19, TypeScript, Vite, Tailwind; Backend: Express, TypeORM, MySQL
+  - Deployed on Railway (QA environment)
+  `,
+  },
 ];
 
 export function Projects() {
@@ -252,7 +382,7 @@ export function Projects() {
           {projects.map((project, index) => (
             <Card
               key={index}
-              className={`overflow-hidden group hover:border-primary/50 transition-all duration-700 hover:scale-105 hover:shadow-lg hover:shadow-primary/20 ${
+              className={`overflow-hidden group hover:border-primary/50 transition-all duration-700  hover:shadow-lg hover:shadow-primary/20 ${
                 isVisible
                   ? "opacity-100 translate-y-0"
                   : "opacity-0 translate-y-8"
@@ -263,10 +393,10 @@ export function Projects() {
                 <img
                   src={project.image || "/placeholder.svg"}
                   alt={project.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 rounded-md"
                 />
               </div>
-              <div className="p-6">
+              <div className="p-2">
                 <h3 className="text-xl font-bold mb-2">{project.title}</h3>
                 <p className="text-sm text-muted-foreground mb-4">
                   {project.description}
